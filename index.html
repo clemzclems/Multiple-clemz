@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Awake Christian Gospel Ministry Int'l</title>
+  <!-- External CSS files -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="minima.css">
+  <link rel="stylesheet" href="md.css">
+  <!-- jQuery and marked.js for markdown rendering -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    /* Basic responsive grid for media */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .media-grid div {
+      border: 1px solid #ddd;
+      padding: 5px;
+      background: #fff;
+    }
+    /* Pagination styling for the blog section */
+    .pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .pagination a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+    /* Ensure embedded video is responsive */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+    .video-container iframe, .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with logo and navigation -->
+  <header style="background-image: linear-gradient(to bottom, #ff99cc, #ffccff);">
+    <div class="header-overlay" style="background-color: rgba(255,255,255,0.7); padding: 20px; text-align: center;">
+      <!-- Logo (applies both to HTML and markdown pages) -->
+      <img src="image/logo.png" alt="Ministry Logo" style="max-width: 150px;">
+      <h1 style="color: #ff0066; margin: 0;">Awake Christian Gospel Ministry Int'l</h1>
+    </div>
+    <nav style="background-color: #333;">
+      <ul style="list-style: none; margin: 0; padding: 10px; display: flex; justify-content: center;">
+        <li style="margin: 0 10px;"><a href="#contact" style="color: #fff;">Contact</a></li>
+        <li style="margin: 0 10px;"><a href="#service" style="color: #fff;">Service</a></li>
+        <li style="margin: 0 10px;"><a href="#sermon" style="color: #fff;">Sermon</a></li>
+        <li style="margin: 0 10px;"><a href="#give" style="color: #fff;">Give</a></li>
+        <li style="margin: 0 10px;"><a href="#event" style="color: #fff;">Event</a></li>
+        <li style="margin: 0 10px;"><a href="#gallery" style="color: #fff;">Gallery</a></li>
+        <li style="margin: 0 10px;"><a href="#blog" style="color: #fff;">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Section: Contact (includes Formspree form) -->
+  <section id="contact" style="padding: 20px; background-color: #e6f7ff;">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/mwpvdgeo" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:8px; margin:5px;">
+      <input type="email" name="email" placeholder="Your Email" required style="padding:8px; margin:5px;">
+      <textarea name="message" placeholder="Your Message" required style="padding:8px; margin:5px; width:100%; height:100px;"></textarea>
+      <button type="submit" style="padding:10px 20px; background-color:#ff0066; color:#fff;">Send</button>
+    </form>
+  </section>
+
+  <!-- Section: Service -->
+  <section id="service" style="padding: 20px; background-color: #ffffcc;">
+    <h2>Our Services</h2>
+    <p>Join us for worship every Sunday at 9:00 AM and Bible study on Wednesdays at 6:00 PM.</p>
+  </section>
+
+  <!-- Section: Sermon -->
+  <section id="sermon" style="padding: 20px; background-color: orange;">
+    <h2>Sermon Archive</h2>
+    <p>Watch or listen to past sermons:</p>
+    <ul>
+      <li><a href="video/sermon1.mp3" style="color: #0000ff;">Sermon: Faith in Trials</a></li>
+      <li><a href="video/sermon2.mp4" style="color: #0000ff;">Sermon: Walking in Victory</a></li>
+    </ul>
+  </section>
+
+  <!-- Section: Give (Donations) -->
+  <section id="give" style="padding: 20px; background-color: #ccff99;">
+    <h2>Give Online</h2>
+    <p>Your generosity helps us continue our ministry.</p>
+    <!-- PayPal donation button -->
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=YOUR_PAYPAL_ACCOUNT" 
+       style="padding:10px 20px; background-color:#ff9900; color:#fff; text-decoration:none;">Donate via PayPal</a>
+  </section>
+
+  <!-- Section: Event -->
+  <section id="event" style="padding: 20px; background-color: #ffcccc;">
+    <h2>Upcoming Events</h2>
+    <ul>
+      <li>📅 Easter Celebration - March 31</li>
+      <li>📅 Youth Revival - April 20</li>
+    </ul>
+  </section>
+
+  <!-- Section: Gallery -->
+  <section id="gallery" style="padding: 20px; background-color: #ffcc99;">
+    <h2>Photo Gallery</h2>
+    <div class="media-grid">
+      <!-- Assume these images are in the "image" folder -->
+      <div><img src="image/gallery1.jpg" alt="Church Service" style="width:100%;"></div>
+      <div><img src="image/gallery2.jpg" alt="Praise and Worship" style="width:100%;"></div>
+      <div><img src="image/gallery3.jpg" alt="Youth Fellowship" style="width:100%;"></div>
+      <!-- Additional gallery images as needed -->
+    </div>
+  </section>
+
+  <!-- Section: Blog (Markdown content with pagination) -->
+  <section id="blog" style="padding: 20px; background-color: #ccccff;">
+    <h2>Church Blog</h2>
+    <!-- Container for markdown content -->
+    <div id="markdownContent" style="max-height: 500px; overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
+      <!-- Content will be loaded dynamically from a markdown file (e.g., blog.md) -->
+      Loading blog content...
+       </div>
+    
+    
+    
+    
+    <!-- Pagination (example for multiple pages) -->
+<div class="pagination">
+  <a data-page="1" href="#page1">1</a>
+  <a data-page="2" href="#page2">2</a>
+  <a data-page="3" href="#page3">3</a>
+  <a data-page="4" href="#page4">4</a>
+  <a data-page="5" href="#page5">5</a>
+  <a data-page="6" href="#page6">6</a>
+  <a data-page="7" href="#page7">7</a>
+  <a data-page="8" href="#page8">8</a>
+  <a data-page="9" href="#page9">9</a>
+  <a data-page="10" href="#page10">10</a>
+  <a data-page="11" href="#page11">11</a>
+  <a data-page="12" href="#page12">12</a>
+</div>
+
+<!-- JavaScript for Markdown Pagination -->
+<script>
+  // Function to load the markdown file corresponding to the selected page.
+  function loadMarkdown(page) {
+    $.ajax({
+      url: 'content/blog-page-' + page + '.md', // Ensure your markdown files follow this naming pattern
+      dataType: 'text',
+      success: function(data) {
+        try {
+          var htmlContent = marked.parse(data);
+          $('#markdownContent').html(htmlContent);
+        } catch (error) {
+          $('#markdownContent').html('<p style="color:red;">Error processing markdown content.</p>');
+          console.error('Markdown processing error:', error);
+        }
+      },
+      error: function() {
+        $('#markdownContent').html('<p style="color:red;">Error: Unable to load blog content for page ' + page + '.</p>');
+      }
+    });
+  }
+
+  // Event handler for pagination links.
+  $('.pagination a').on('click', function(e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    var page = $(this).data('page');
+    loadMarkdown(page);
+  });
+
+  // Load the first page by default.
+  $(document).ready(function() {
+    loadMarkdown(1);
+  });
+</script>
+    
+    
+    
+    
+    <!-- Pagination (example for 10 pages) -->
+<div class="pagination">
+  <a data-page="1" href="#page1">1</a>
+  <a data-page="2" href="#page2">2</a>
+  <a data-page="3" href="#page3">3</a>
+  <a data-page="4" href="#page4">4</a>
+  <a data-page="5" href="#page5">5</a>
+  <a data-page="6" href="#page6">6</a>
+  <a data-page="7" href="#page7">7</a>
+  <a data-page="8" href="#page8">8</a>
+  <a data-page="9" href="#page9">9</a>
+  <a data-page="10" href="#page10">10</a>
+  <a data-page="11" href="#page11">11</a>
+  <a data-page="12" href="#page12">12</a>
+
+</div>
+</section>
+
+  <!-- Section: Video Player with auto-caption placeholder and media grid -->
+  <section id="media" style="padding: 20px; background-color: #f0f0f0;">
+    <h2>Media Center</h2>
+    <!-- Video player that can play YouTube/local videos -->
+    <div class="video-container">
+      <!-- Example: YouTube embed -->
+    
+      <iframe src="https://www.youtube.com/embed/xMvUqvrJCBY" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!-- Placeholder for auto-generated captions -->
+    <p id="videoCaption" style="font-style: italic; color: #555;">Auto-generated caption will appear here...</p>
+    
+    <!-- Media grid: 2 slots for GIFs, 2 for videos, 3 for pictures -->
+    <div class="media-grid" style="margin-top: 20px;">
+      <!-- GIF Slots -->
+      <div><img src="image/animated1.gif" alt="Animated GIF" style="width:100%;"></div>
+      <div><img src="image/animated2.gif" alt="Animated GIF" style="width:100%;"></div>
+      <!-- Video Slots -->
+      <div>
+        <video controls style="width:100%;">
+          <source src="video/sample1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div>
+        <video controls style="width:100%;">
+          <source src="video/sample2.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Picture Slots -->
+      <div><img src="image/picture1.jpg" alt="Picture" style="width:100%;"></div>
+      <div><img src="image/picture2.jpg" alt="Picture" style="width:100%;"></div>
+      <div><img src="image/picture3.jpg" alt="Picture" style="width:100%;"></div>
+    </div>
+  </section>
+
+<!-- JavaScript for Markdown Loading with Error Handling -->
+<script>
+  // Function to load the markdown file corresponding to the selected page.
+  function loadMarkdown(page) {
+    $.ajax({
+      // If your markdown files are in a subfolder named "content", include it in the URL.
+      url: 'content/blog-page-' + page + '.md',
+      dataType: 'text',
+      success: function(data) {
+        try {
+          var htmlContent = marked.parse(data);
+          $('#markdownContent').html(htmlContent);
+        } catch (error) {
+          $('#markdownContent').html('<p style="color:red;">Error processing markdown content.</p>');
+          console.error('Markdown processing error:', error);
+        }
+      },
+      error: function() {
+        $('#markdownContent').html('<p style="color:red;">Error: Unable to load blog content for page ' + page + '.</p>');
+      }
+    });
+  }
+
+  // Event handler for pagination links.
+  $('.pagination a').on('click', function(e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    var page = $(this).data('page');
+    loadMarkdown(page);
+  });
+
+  // Load the first page by default.
+  $(document).ready(function() {
+    loadMarkdown(1);
+  });
+</script>
+<<!-- JavaScript for auto-generating video captions with debugging and delay -->
+<script>
+  function generateCaption() {
+    var caption = "This is an auto-generated caption for the video.";
+    var captionElem = document.getElementById('videoCaption');
+    console.log("generateCaption() called.");
+    if (captionElem) {
+      captionElem.textContent = caption;
+      console.log("Caption updated successfully.");
+    } else {
+      console.error("Error: Element with ID 'videoCaption' not found.");
+    }
+  }
+
+  // Use window.onload with a 2-second delay to ensure all elements are loaded.
+  window.onload = function() {
+    console.log("Window loaded. Waiting 2 seconds before updating caption.");
+    setTimeout(generateCaption, 2000);
+  };
+</script>
+
+
+
+  <!-- Footer with social media links -->
+  <footer style="background-color: #333; color: #fff; text-align: center; padding: 20px;">
+    <p>Follow us on:</p>
+    <a href="https://facebook.com" style="color:#fff; text-decoration: none;">Facebook</a> |
+    <a href="https://instagram.com" style="color:#fff; text-decoration: none;">Instagram</a> |
+    <a href="https://twitter.com" style="color:#fff; text-decoration: none;">Twitter</a>
+    <p>&copy; 2025 Awake Christian Gospel Ministry Int'l. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
